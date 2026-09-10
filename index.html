@@ -3,307 +3,1241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>濱口 寛也 - ポートフォリオ / 職務経歴書</title>
+  <title>ポートフォリオ / 職務経歴書</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        "Yu Gothic",
+        "YuGothic",
+        Meiryo,
+        sans-serif;
+      color: #1e293b;
+      background: #f8fafc;
+    }
+
+    .section-label {
+      letter-spacing: 0.18em;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 8px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: #dbeafe;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 3px;
+      top: 7px;
+      width: 11px;
+      height: 11px;
+      border-radius: 9999px;
+      background: #2563eb;
+      border: 3px solid #eff6ff;
+      box-shadow: 0 0 0 1px #93c5fd;
+    }
+
+    .career-card {
+      position: relative;
+    }
+
+    .tech-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.22rem 0.55rem;
+      border-radius: 9999px;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.72rem;
+      line-height: 1.2;
+      border: 1px solid #e2e8f0;
+    }
+
+    .number-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .number-card::before {
+      content: "";
+      position: absolute;
+      right: -18px;
+      top: -28px;
+      width: 100px;
+      height: 100px;
+      border-radius: 9999px;
+      background: #eff6ff;
+      z-index: 0;
+    }
+
+    .number-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      section {
+        break-inside: avoid;
+      }
+
+      .career-card,
+      .number-card {
+        break-inside: avoid;
+      }
+
+      @page {
+        margin: 10mm;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+<body>
 
   <!-- Header -->
-  <header class="bg-slate-900 text-white py-12 shadow-md">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+  <header class="bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-8 sm:py-10">
+
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+
         <div>
-          <span class="text-xs font-semibold uppercase tracking-widest text-blue-400">Portfolio & Career History</span>
-          <h1 class="text-3xl md:text-4xl font-bold mt-1">濱口 寛也 <span class="text-lg font-normal text-slate-400">（ハマグチ ヒロヤ）</span></h1>
-          <p class="text-lg text-slate-300 mt-2 font-medium">個人事業主 / フリーランス バックエンドエンジニア</p>
+          <p class="section-label text-xs font-semibold text-brand-600 mb-3">
+            PORTFOLIO / CAREER HISTORY
+          </p>
+
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+            ralu
+          </h1>
+
+          <p class="mt-1 text-sm text-slate-500">
+            ラル
+          </p>
+
+          <p class="mt-4 text-base sm:text-lg font-semibold text-slate-700">
+            フリーランス バックエンドエンジニア
+          </p>
         </div>
-        <div class="text-sm text-slate-300 space-y-1 bg-slate-800 p-4 rounded-lg border border-slate-700">
-          <p><span class="text-slate-400">年齢:</span> 26歳</p>
-          <p><span class="text-slate-400">実務経験年数:</span> 6年+</p>
-          <p><span class="text-slate-400">活動拠点:</span> 大阪</p>
-          <p><span class="text-slate-400">保有資格:</span> 基本情報技術者, ITパスポート, C言語検定2級, MOS Word 2016, 普通自動車第一種運転免許（AT限定）</p>
+
+        <div class="flex flex-col gap-2 sm:gap-3">
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 text-sm">
+            <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 min-w-[100px]">
+              <p class="text-xs text-slate-400">年齢</p>
+              <p class="mt-1 font-semibold text-slate-800">
+                <span id="age">--</span>歳
+              </p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 min-w-[100px]">
+              <p class="text-xs text-slate-400">拠点</p>
+              <p class="mt-1 font-semibold text-slate-800">大阪府</p>
+            </div>
+
+            <div class="bg-brand-50 border border-blue-100 rounded-xl px-4 py-3 min-w-[110px]">
+              <p class="text-xs text-brand-600">実務経験</p>
+              <p class="mt-1 font-semibold text-brand-900">
+                <span id="experience">--</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5">
+            <p class="text-xs text-slate-400 mb-1.5">経験業界</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-200/70 text-slate-700">電力</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-200/70 text-slate-700">電機メーカー</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-200/70 text-slate-700">教育</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-200/70 text-slate-700">自動車</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-200/70 text-slate-700">自動車部品</span>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-6 py-10 space-y-12">
+  <!-- Navigation -->
+  <nav class="no-print sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="flex gap-5 sm:gap-7 overflow-x-auto whitespace-nowrap text-sm">
+        <a href="#pr" class="py-3 text-slate-600 hover:text-brand-600">自己PR</a>
+        <a href="#skills" class="py-3 text-slate-600 hover:text-brand-600">技術・経験</a>
+        <a href="#career" class="py-3 text-slate-600 hover:text-brand-600">職務経歴</a>
+        <a href="#qualification" class="py-3 text-slate-600 hover:text-brand-600">資格</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- 自己PR / 特徴 -->
-    <section>
-      <h2 class="text-2xl font-bold text-slate-900 border-b-2 border-blue-600 pb-2 mb-6">自己PR・強み</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-blue-600 mb-2">障害対応・不具合調査のスピーディな解決</h3>
-          <p class="text-sm text-slate-600">本番障害対応や不具合調査の実績が多数あり、原因特定から改修・テストまでを迅速に一貫して行うことができます。</p>
+
+  <main class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <!-- Self PR -->
+    <section id="pr" class="py-10 sm:py-12">
+      <div class="mb-6">
+        <p class="section-label text-xs font-semibold text-brand-600 mb-2">
+          SELF PR
+        </p>
+        <h2 class="text-2xl font-bold text-slate-900">
+          自己PR
+        </h2>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-sm mb-5">
+        <p class="text-sm sm:text-base leading-7 text-slate-600">
+          Javaを中心とした業務システム開発を軸に、要件整理・設計・実装・テスト・保守まで
+          一貫して携わってきました。既存システムの保守改善だけでなく、新規開発や
+          フレームワーク刷新、テスト自動化、開発環境整備などにも対応しています。
+        </p>
+
+        <p class="mt-3 text-sm sm:text-base leading-7 text-slate-600">
+          目の前の実装だけでなく、品質・保守性・開発効率を意識しながら、
+          必要に応じて調査、仕組みづくり、ドキュメント整備まで担当できることを強みとしています。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+
+        <div class="number-card bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-start gap-4">
+            <span class="text-sm font-bold text-brand-600">01</span>
+            <div>
+              <h3 class="font-bold text-slate-900">
+                品質を安定させるための仕組みづくり
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">
+                コーディングだけでなく、設計ルール・テンプレート・テスト自動化など、
+                チームで品質を維持しやすい環境づくりにも取り組んできました。
+              </p>
+              <p class="mt-2 text-xs font-semibold text-brand-600">
+                経験例：設計ルール整備 / テスト自動化 / Git移行
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-blue-600 mb-2">キャッチアップ力と業務効率化の推進</h3>
-          <p class="text-sm text-slate-600">未経験技術でも早期に習得し、VBAやPlaywrightを用いた業務自動化、CI/CD構築、ロジック再設計などの改善・効率化タスクを主体的に推進します。</p>
+
+        <div class="number-card bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-start gap-4">
+            <span class="text-sm font-bold text-brand-600">02</span>
+            <div>
+              <h3 class="font-bold text-slate-900">
+                新しい技術・ツールへのキャッチアップ
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">
+                未経験のフレームワークやツールでも、仕様・既存コード・実行環境を
+                調査しながら短期間で実務に取り入れてきました。
+              </p>
+              <p class="mt-2 text-xs font-semibold text-brand-600">
+                経験例：ASTERIA / JMeter / k6 / Playwright / GitLab
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-blue-600 mb-2">上流から下流まで一貫対応できる確かな技術力</h3>
-          <p class="text-sm text-slate-600">要件定義、画面/バッチ/帳票の基本設計から詳細設計・実装・単体/結合/総合テストまでフルフェーズで対応可能です。</p>
+
+        <div class="number-card bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-start gap-4">
+            <span class="text-sm font-bold text-brand-600">03</span>
+            <div>
+              <h3 class="font-bold text-slate-900">
+                障害・不具合の調査と対応
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">
+                発生条件やログ、ソースコード、DBの状態などを確認し、
+                原因を切り分けたうえで修正からテストまで対応してきました。
+              </p>
+              <p class="mt-2 text-xs font-semibold text-brand-600">
+                経験例：本番障害対応 / SQL調査 / 予約ロジック不具合
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-blue-600 mb-2">開発効率・品質向上への貢献</h3>
-          <p class="text-sm text-slate-600">設計書ガイドラインの策定、標準テンプレートの作成、レビュー文化の整備により、チーム全体の品質底上げと作業効率向上を実現してきました。</p>
+
+        <div class="number-card bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-start gap-4">
+            <span class="text-sm font-bold text-brand-600">04</span>
+            <div>
+              <h3 class="font-bold text-slate-900">
+                設計からテスト・保守まで対応
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">
+                詳細設計・実装だけでなく、基本設計、単体・結合・システムテスト、
+                本番保守まで工程をまたいで対応できます。
+              </p>
+              <p class="mt-2 text-xs font-semibold text-brand-600">
+                経験例：新規画面開発 / バッチ / テスト / 保守
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills" class="py-10 sm:py-12 border-t border-slate-200">
+      <div class="mb-6">
+        <p class="section-label text-xs font-semibold text-brand-600 mb-2">
+          SKILLS & EXPERIENCE
+        </p>
+        <h2 class="text-2xl font-bold text-slate-900">
+          技術・経験
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-4">
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-3">対応工程</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">要件整理</span>
+            <span class="tech-tag">基本設計</span>
+            <span class="tech-tag">詳細設計</span>
+            <span class="tech-tag">実装</span>
+            <span class="tech-tag">単体テスト</span>
+            <span class="tech-tag">結合テスト</span>
+            <span class="tech-tag">システムテスト</span>
+            <span class="tech-tag">保守・障害対応</span>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-3">言語・フレームワーク</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Spring Boot</span>
+            <span class="tech-tag">Struts 1.1</span>
+            <span class="tech-tag">独自FW</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">VBA</span>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-3">DB・OS</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">Oracle</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Windows</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-3">ツール・製品</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">CVS</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">SVN</span>
+            <span class="tech-tag">GitLab</span>
+            <span class="tech-tag">GitHub</span>
+            <span class="tech-tag">k6</span>
+            <span class="tech-tag">JMeter</span>
+            <span class="tech-tag">Playwright</span>
+            <span class="tech-tag">ASTERIA</span>
+            <span class="tech-tag">Dynamics 365</span>
+            <span class="tech-tag">Eclipse</span>
+            <span class="tech-tag">VS Code</span>
+            <span class="tech-tag">GitHub Copilot</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Career Summary -->
+    <section class="py-10 sm:py-12 border-t border-slate-200">
+      <div class="mb-6">
+        <p class="section-label text-xs font-semibold text-brand-600 mb-2">
+          CAREER SUMMARY
+        </p>
+        <h2 class="text-2xl font-bold text-slate-900">
+          職務経歴概要
+        </h2>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead class="bg-slate-50 border-b border-slate-200">
+              <tr>
+                <th class="text-left px-4 py-3 font-semibold text-slate-600 whitespace-nowrap w-[130px]">期間</th>
+                <th class="text-left px-4 py-3 font-semibold text-slate-600 min-w-[220px]">案件名</th>
+                <th class="text-left px-4 py-3 font-semibold text-slate-600 whitespace-nowrap w-[140px]">役割 / 規模</th>
+                <th class="text-left px-4 py-3 font-semibold text-slate-600">主な技術</th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-slate-100">
+
+              <tr>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-500">2026/08〜現在</td>
+                <td class="px-4 py-3 font-medium text-slate-800 leading-snug">
+                  大手自動車部品メーカー向け会計パッケージ導入・保守支援
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-600">
+                  <span class="block font-medium text-slate-800">メンバー</span>
+                  <span class="text-xs text-slate-400">35名（チーム3名）</span>
+                </td>
+                <td class="px-4 py-3 text-slate-500">Java / VBA / Dynamics 365 / CVS / GitLab</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-500">2026/04〜07</td>
+                <td class="px-4 py-3 font-medium text-slate-800 leading-snug">
+                  大手自動車メーカー向け基幹系複数システム（FW刷新）
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-600">
+                  <span class="block font-medium text-slate-800">メンバー</span>
+                  <span class="text-xs text-slate-400">15名</span>
+                </td>
+                <td class="px-4 py-3 text-slate-500">Java / Oracle / Linux / GitLab / SVN</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-500">
+                  2026/02〜06<br>
+                  2026/08〜現在
+                </td>
+                <td class="px-4 py-3 font-medium text-slate-800 leading-snug">
+                  アートスクール向け予約管理システム
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-600">
+                  <span class="block font-medium text-slate-800">開発・保守</span>
+                  <span class="text-xs text-slate-400">2名</span>
+                </td>
+                <td class="px-4 py-3 text-slate-500">PHP / Laravel / MySQL / Docker / Playwright / k6</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-500">2024/12〜2026/03</td>
+                <td class="px-4 py-3 font-medium text-slate-800 leading-snug">
+                  電力会社向け設備管理システム（新規開発）
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-600">
+                  <span class="block font-medium text-slate-800">サブリーダー</span>
+                  <span class="text-xs text-slate-400">20名（画面5名）</span>
+                </td>
+                <td class="px-4 py-3 text-slate-500">Java / Spring Boot / Oracle / SVN</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-500">2024/06〜11</td>
+                <td class="px-4 py-3 font-medium text-slate-800 leading-snug">
+                  大手電機メーカー向けIT資産管理システム（保守改善）
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-600">
+                  <span class="block font-medium text-slate-800">メンバー</span>
+                  <span class="text-xs text-slate-400">15名</span>
+                </td>
+                <td class="px-4 py-3 text-slate-500">Java / PostgreSQL / Struts系独自FW</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-500">2022/08〜2023/11</td>
+                <td class="px-4 py-3 font-medium text-slate-800 leading-snug">
+                  大手電機メーカー向け会計システム開発
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-600">
+                  <span class="block font-medium text-slate-800">メンバー</span>
+                  <span class="text-xs text-slate-400">7名</span>
+                </td>
+                <td class="px-4 py-3 text-slate-500">Java / ASTERIA / Oracle / JMeter</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-500">2020/07〜2022/07</td>
+                <td class="px-4 py-3 font-medium text-slate-800 leading-snug">
+                  大手電機メーカー向け受発注システム開発
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-slate-600">
+                  <span class="block font-medium text-slate-800">メンバー</span>
+                  <span class="text-xs text-slate-400">10名</span>
+                </td>
+                <td class="px-4 py-3 text-slate-500">Java / JavaScript / Oracle / Git</td>
+              </tr>
+
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <!-- 技術スタック & 対応領域 -->
-    <section>
-      <h2 class="text-2xl font-bold text-slate-900 border-b-2 border-blue-600 pb-2 mb-6">技術スタック & 対応領域</h2>
-      
-      <!-- 対応領域 -->
-      <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm mb-6">
-        <h3 class="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wider text-slate-500">対応可能工程</h3>
-        <div class="flex flex-wrap gap-2 text-xs font-semibold">
-          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg border border-blue-100">要件定義（改善提案・現行調査・要件整理）</span>
-          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg border border-blue-100">基本設計（画面/バッチ/帳票/IF/DB設計）</span>
-          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg border border-blue-100">詳細設計〜実装</span>
-          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg border border-blue-100">単体テスト</span>
-          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg border border-blue-100">結合・総合テスト</span>
-          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg border border-blue-100">保守・運用・業務自動化</span>
-        </div>
+
+    <!-- Career -->
+    <section id="career" class="py-10 sm:py-12 border-t border-slate-200">
+      <div class="mb-6">
+        <p class="section-label text-xs font-semibold text-brand-600 mb-2">
+          CAREER HISTORY
+        </p>
+        <h2 class="text-2xl font-bold text-slate-900">
+          職務経歴
+        </h2>
       </div>
 
-      <!-- スキルカードグリッド -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-slate-900 border-b pb-2 mb-3">言語 & FW</h3>
-          <ul class="text-sm space-y-2 text-slate-700">
-            <li><strong class="text-slate-900">Java</strong> / Spring Boot, 独自FW</li>
-            <li><strong class="text-slate-900">JavaScript / HTML / CSS / VBA</strong></li>
-            <li><strong class="text-slate-900">PHP</strong> / Laravel</li>
-            <li><strong class="text-slate-900">Python</strong> / Django</li>
-          </ul>
-        </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-slate-900 border-b pb-2 mb-3">DB & OS</h3>
-          <ul class="text-sm space-y-2 text-slate-700">
-            <li><strong class="text-slate-900">Oracle</strong></li>
-            <li><strong class="text-slate-900">PostgreSQL</strong></li>
-            <li><strong class="text-slate-900">MySQL</strong></li>
-            <li><strong class="text-slate-900">OS:</strong> Windows, Linux</li>
-          </ul>
-        </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-slate-900 border-b pb-2 mb-3">ツール & 開発環境</h3>
-          <ul class="text-sm space-y-2 text-slate-700">
-            <li><strong class="text-slate-900">テスト・RPA自動化:</strong> Playwright, k6, JMeter</li>
-            <li><strong class="text-slate-900">バージョン管理/CI:</strong> Git, GitHub, GitLab, SVN</li>
-            <li><strong class="text-slate-900">EAI:</strong> ASTERIA</li>
-            <li><strong class="text-slate-900">開発ツール:</strong> Docker, VSCode, GitHub Copilot</li>
-          </ul>
-        </div>
+      <div class="relative pl-7 sm:pl-9">
+
+        <div class="timeline-line"></div>
+
+
+        <!-- 01 -->
+        <article class="career-card pb-7">
+          <div class="timeline-dot"></div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-brand-600 tracking-wide">
+                  2026/08〜現在
+                </p>
+                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                  大手自動車部品メーカー向け会計パッケージ導入・保守支援
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-2 shrink-0">
+                <span class="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold">
+                  役割：メンバー
+                </span>
+                <span class="inline-flex px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                  規模：3名 / 全体35名
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">担当内容</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・既存システム、製品設定の調査</li>
+                  <li>・既存運用業務のワークフロー可視化、自動化推進</li>
+                  <li>・設定方針・パラメータ設計</li>
+                  <li>・データ連携仕様の確認</li>
+                  <li>・テスト、運用・保守対応</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">実績</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・VBAによるExcel / CSV作成作業を約8時間 → 1〜2時間へ短縮</li>
+                  <li>・Java + Playwrightによるデータ登録自動化を実施</li>
+                  <li>・CVS → GitLab移行について調査・手順整理・マニュアル作成</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">VBA</span>
+                <span class="tech-tag">Dynamics 365</span>
+                <span class="tech-tag">CVS</span>
+                <span class="tech-tag">GitLab</span>
+                <span class="tech-tag">Eclipse</span>
+                <span class="tech-tag">VS Code</span>
+                <span class="tech-tag">Windows</span>
+                <span class="tech-tag">Linux</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- 02 -->
+        <article class="career-card pb-7">
+          <div class="timeline-dot"></div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-brand-600 tracking-wide">
+                  2026/04〜2026/07
+                </p>
+                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                  大手自動車メーカー向け基幹系複数システム（フレームワーク刷新）
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-2 shrink-0">
+                <span class="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold">
+                  役割：メンバー
+                </span>
+                <span class="inline-flex px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                  規模：15名
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">担当内容</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・既存システムのフレームワーク刷新</li>
+                  <li>・Javaによる実装、単体・結合テスト</li>
+                  <li>・CI/CD環境、AP・BTサーバーの構築</li>
+                  <li>・GitLab環境の構築</li>
+                  <li>・SVN → Git移行対応</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">実績</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・専門担当者がいない状況からCI/CD環境を構築</li>
+                  <li>・SVN → Git移行手順を整理し、マニュアル化</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">Oracle</span>
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">Spring系独自FW</span>
+                <span class="tech-tag">Eclipse</span>
+                <span class="tech-tag">SVN</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">GitLab</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- 03 Art school -->
+        <article class="career-card pb-7">
+          <div class="timeline-dot"></div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-brand-600 tracking-wide">
+                  2026/02〜2026/06 / 2026/08〜現在
+                </p>
+                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                  アートスクール向け予約管理システム
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-2 shrink-0">
+                <span class="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold">
+                  役割：開発・保守
+                </span>
+                <span class="inline-flex px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                  規模：2名
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm">
+              <p class="font-semibold text-slate-700 mb-1">契約・稼働状況</p>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-slate-600">
+                <span>2026/02〜06：開発</span>
+                <span class="text-slate-300">→</span>
+                <span>2026/07：契約空白</span>
+                <span class="text-slate-300">→</span>
+                <span>2026/08〜現在：本番保守</span>
+              </div>
+              <p class="mt-1 text-xs text-slate-500">
+                ※2026年7月は本番リリース前の空白期間による契約停止
+              </p>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">担当内容</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・既存資料、ソースコードの調査</li>
+                  <li>・予約ロジックのレビュー・再設計</li>
+                  <li>・不具合修正、単体テスト</li>
+                  <li>・Playwrightによる結合テスト自動化</li>
+                  <li>・k6による負荷テスト</li>
+                  <li>・本番環境の保守対応</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">実績</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・月跨ぎ・繰越を含む予約処理の不具合を調査・修正</li>
+                  <li>・Playwrightによるテスト自動化を実装</li>
+                  <li>・GitHub Copilotを補助的に活用し、コード・資料レビューを効率化</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">VS Code</span>
+                <span class="tech-tag">GitHub</span>
+                <span class="tech-tag">GitHub Copilot</span>
+                <span class="tech-tag">Playwright</span>
+                <span class="tech-tag">k6</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- 04 -->
+        <article class="career-card pb-7">
+          <div class="timeline-dot"></div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-brand-600 tracking-wide">
+                  2024/12〜2026/03
+                </p>
+                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                  電力会社向け設備管理システム（新規開発）
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-2 shrink-0">
+                <span class="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold">
+                  役割：メンバー→サブリーダー
+                </span>
+                <span class="inline-flex px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                  規模：画面5名 / 全体20名
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">担当内容</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・フルスクラッチでの画面・バッチ開発</li>
+                  <li>・基本設計、詳細設計、実装</li>
+                  <li>・単体・結合・システムテスト</li>
+                  <li>・設計書レビュー、ルール・テンプレート整備</li>
+                  <li>・開発環境・手順書の整備</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">実績</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・設計ルール・テンプレートを整備</li>
+                  <li>・チーム内のタスクを整理・拾い上げ</li>
+                  <li>・共通画面コンポーネントを実装</li>
+                  <li>・実装内容をもとに設計書を作成</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">Oracle</span>
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">MyBatis</span>
+                <span class="tech-tag">Thymeleaf</span>
+                <span class="tech-tag">Eclipse</span>
+                <span class="tech-tag">VS Code</span>
+                <span class="tech-tag">GitHub Copilot</span>
+                <span class="tech-tag">SVN</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- 05 -->
+        <article class="career-card pb-7">
+          <div class="timeline-dot"></div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-brand-600 tracking-wide">
+                  2024/06〜2024/11
+                </p>
+                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                  大手電機メーカー向けIT資産管理システム（保守改善）
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-2 shrink-0">
+                <span class="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold">
+                  役割：メンバー
+                </span>
+                <span class="inline-flex px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                  規模：15名
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">担当内容</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・5件の改善要望に対応</li>
+                  <li>・2件：要件整理〜結合テストまで担当</li>
+                  <li>・3件：基本設計〜単体テストまで担当</li>
+                  <li>・既存ソース・DB・SQLの調査</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">実績</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・顧客要望を整理し、実装方針を説明</li>
+                  <li>・SQLを調査・改善し、処理の効率化に対応</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">Struts系独自FW</span>
+                <span class="tech-tag">Eclipse</span>
+                <span class="tech-tag">SVN</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- 06 -->
+        <article class="career-card pb-7">
+          <div class="timeline-dot"></div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-brand-600 tracking-wide">
+                  2022/08〜2023/11
+                </p>
+                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                  大手電機メーカー向け会計システム開発
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-2 shrink-0">
+                <span class="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold">
+                  役割：メンバー
+                </span>
+                <span class="inline-flex px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                  規模：7名
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">担当内容</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・ASTERIAを使用した基本設計</li>
+                  <li>・詳細設計、実装、単体・結合テスト</li>
+                  <li>・画面、バッチ、帳票開発</li>
+                  <li>・JMeterによる負荷テスト</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">実績</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・各種マスタ設定などの構成管理を担当</li>
+                  <li>・ASTERIA / JMeterを短期間でキャッチアップし実務へ適用</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">ASTERIA</span>
+                <span class="tech-tag">Oracle</span>
+                <span class="tech-tag">Windows</span>
+                <span class="tech-tag">独自FW</span>
+                <span class="tech-tag">Eclipse</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">SVN</span>
+                <span class="tech-tag">JMeter</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- 07 -->
+        <article class="career-card">
+          <div class="timeline-dot"></div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-brand-600 tracking-wide">
+                  2020/07〜2022/07
+                </p>
+                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                  大手電機メーカー向け受発注システム開発
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-2 shrink-0">
+                <span class="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold">
+                  役割：メンバー
+                </span>
+                <span class="inline-flex px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                  規模：10名
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">担当内容</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・詳細設計、実装</li>
+                  <li>・単体・結合テスト</li>
+                  <li>・本番障害・問い合わせ対応</li>
+                  <li>・画面改修</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">実績</h4>
+                <ul class="space-y-1.5 text-slate-600 leading-6">
+                  <li>・多数の本番障害に対して原因調査・修正を実施</li>
+                  <li>・ログ・ソース・DBを確認し、原因を早期に特定</li>
+                  <li>・複数画面の改修を継続的に担当</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">Oracle</span>
+                <span class="tech-tag">Windows</span>
+                <span class="tech-tag">独自FW</span>
+                <span class="tech-tag">Eclipse</span>
+                <span class="tech-tag">Git</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <!-- 職務経歴一覧 -->
-    <section>
-      <h2 class="text-2xl font-bold text-slate-900 border-b-2 border-blue-600 pb-2 mb-6">職務経歴</h2>
-      <div class="space-y-6">
 
-        <!-- 案件 12 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
+    <!-- Other Career -->
+    <section class="py-10 sm:py-12 border-t border-slate-200">
+      <div class="mb-6">
+        <p class="section-label text-xs font-semibold text-brand-600 mb-2">
+          OTHER EXPERIENCE
+        </p>
+        <h2 class="text-2xl font-bold text-slate-900">
+          その他の職務経歴
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+
+        <article class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex justify-between items-start gap-3">
             <div>
-              <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full">参画中</span>
-              <h3 class="text-lg font-bold text-slate-900 inline ml-2">大手自動車部品メーカー向け会計パッケージ導入・保守支援</h3>
+              <p class="text-xs font-semibold text-brand-600">2026/01（1ヶ月）</p>
+              <h3 class="mt-1 font-bold text-slate-900">
+                太陽光パネル施工業者向け接着耐力計算システム
+              </h3>
             </div>
-            <span class="text-sm text-slate-500 font-medium">2026/08 〜 現在</span>
+            <span class="inline-flex px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold shrink-0">
+              3名
+            </span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> メンバー (全体35名/チーム3名)</div>
-            <div><strong>言語:</strong> Java, VBA</div>
-            <div><strong>環境:</strong> Windows, Linux</div>
-            <div><strong>ツール:</strong> Microsoft Dynamics 365, Playwright, GitLab</div>
+
+          <p class="mt-3 text-sm leading-6 text-slate-600">
+            要件・設計の整合性確認、AI生成コードのレビュー・修正、単体テストを担当。
+            Controllerへの処理集中、Service分割不足、呼び出し不整合などを確認し修正。
+          </p>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">VS Code</span>
+            <span class="tech-tag">GitHub</span>
+            <span class="tech-tag">GitHub Copilot</span>
           </div>
-          <div class="text-sm space-y-3 text-slate-700">
+        </article>
+
+
+        <article class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex justify-between items-start gap-3">
             <div>
-              <p class="font-bold text-slate-900 mb-1">＜業務内容＞</p>
-              <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-                <li>要件定義・設計：顧客要件の取りまとめ、パラメータ設計、周辺システムとのデータ連携仕様調査</li>
-                <li>テスト・運用保守：設定内容の動作確認、導入後のデータ連携問合せ対応、周辺システムの保守運用支援</li>
-                <li>既存設定手順書の見直し・修正およびデータ連携に伴う総合テスト支援</li>
-              </ul>
+              <p class="text-xs font-semibold text-brand-600">2024/03〜2024/05</p>
+              <h3 class="mt-1 font-bold text-slate-900">
+                大手電機メーカー向け財務管理システム開発
+              </h3>
             </div>
+            <span class="inline-flex px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold shrink-0">
+              10名
+            </span>
+          </div>
+
+          <p class="mt-3 text-sm leading-6 text-slate-600">
+            要件整理支援、基本設計を担当。
+          </p>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">Oracle</span>
+            <span class="tech-tag">独自FW</span>
+          </div>
+        </article>
+
+
+        <article class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex justify-between items-start gap-3">
             <div>
-              <p class="font-bold text-slate-900 mb-1">＜業務自動化・改善実績＞</p>
-              <ul class="list-disc list-inside space-y-1.5 pl-2 text-slate-600">
-                <li>
-                  <strong class="text-slate-800">VBAによるExcel作業の自動化：</strong>
-                  Excel入力業務やCSV作成の手間を大幅削減するため、VBAマクロを導入。従来約8時間かかっていた作業を1〜2時間程度まで削減。
-                </li>
-                <li>
-                  <strong class="text-slate-800">Java + Playwrightを用いたRPA化（調整中）：</strong>
-                  システムへのデータ登録業務自動化のため、JavaとPlaywrightを用いたRPAを提案・構築。
-                </li>
-                <li>
-                  <strong class="text-slate-800">CVSからGitLabへの移行推進：</strong>
-                  単なるGit移行の予定から、他プロジェクトでの利用実績や利点を提示してGitLab採用を提案。移行方法調査および手順書を作成しスムーズな移行を実現。
-                </li>
-                <li class="text-xs text-slate-500 pl-4 border-l-2 border-slate-200">
-                  ※上記自動化・改善施策はいずれも自ら起案・セキュリティ調査・社内調整・設計・実装まで一貫して担当。
-                </li>
-              </ul>
+              <p class="text-xs font-semibold text-brand-600">2023/12〜2024/02</p>
+              <h3 class="mt-1 font-bold text-slate-900">
+                大手電機メーカー向け環境情報基盤構築
+              </h3>
             </div>
+            <span class="inline-flex px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold shrink-0">
+              10名
+            </span>
           </div>
-        </div>
 
-        <!-- 案件 11 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
-            <h3 class="text-lg font-bold text-slate-900">大手自動車メーカー向け基幹系複数システム（フレームワーク刷新）</h3>
-            <span class="text-sm text-slate-500 font-medium">2026/04 〜 2026/07 (4ヶ月)</span>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> メンバー (15名)</div>
-            <div><strong>言語/DB:</strong> Java / Oracle</div>
-            <div><strong>OS:</strong> Linux</div>
-            <div><strong>FW・ツール:</strong> 独自FW(Springベース), GitLab, SVN, Git</div>
-          </div>
-          <div class="text-sm space-y-2 text-slate-700">
-            <p><strong>＜主な実績・業務＞</strong></p>
-            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-              <li>CI/CD自動化用サーバ・AP/BTサーバ構築およびGitLabでの初期設定・CI/CDパイプライン構築を実施</li>
-              <li>SVNからGitへの移行作業と運用ルール作業手順書を作成し、チーム全体の開発効率を向上</li>
-              <li>フレームワーク刷新に伴う改修実装、単体・結合テスト仕様書作成およびテスト実施</li>
-            </ul>
-          </div>
-        </div>
+          <p class="mt-3 text-sm leading-6 text-slate-600">
+            ASTERIAを使用したバッチ処理の設計・実装を担当。
+          </p>
 
-        <!-- 案件 10 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
-            <h3 class="text-lg font-bold text-slate-900">アートスクール向け予約管理システム</h3>
-            <span class="text-sm text-slate-500 font-medium">2026/02 〜 2026/06 (5ヶ月)</span>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="tech-tag">ASTERIA</span>
+            <span class="tech-tag">Oracle</span>
+            <span class="tech-tag">Windows</span>
+            <span class="tech-tag">独自FW</span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> 設計・開発主担当 (2名)</div>
-            <div><strong>言語/DB:</strong> PHP / MySQL</div>
-            <div><strong>OS:</strong> Linux (Docker)</div>
-            <div><strong>FW・ツール:</strong> Laravel, GitHub, Playwright, k6, GitHub Copilot</div>
-          </div>
-          <div class="text-sm space-y-2 text-slate-700">
-            <p><strong>＜主な実績・業務＞</strong></p>
-            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-              <li>GitHub Copilotを活用して既存コードを解析し、仕様が不透明だったシステムの基本・詳細設計書を作成</li>
-              <li>月跨ぎ予約・繰越処理の複雑な予約ロジックを再設計・再構築し、長年の不具合を完全解消</li>
-              <li>Playwrightによる自動UIテストおよびk6を用いた自動負荷テストを導入し、テスト工数を大幅削減</li>
-            </ul>
-          </div>
-        </div>
+        </article>
 
-        <!-- 案件 9 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
-            <h3 class="text-lg font-bold text-slate-900">太陽光パネル施工業者向け接着耐力計算システム</h3>
-            <span class="text-sm text-slate-500 font-medium">2026/01 〜 2026/01 (1ヶ月)</span>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> バックエンド担当 (3名)</div>
-            <div><strong>言語/DB:</strong> Python / MySQL</div>
-            <div><strong>OS:</strong> Linux (Docker)</div>
-            <div><strong>FW・ツール:</strong> Django, GitHub, GitHub Copilot, VSCode</div>
-          </div>
-          <div class="text-sm space-y-2 text-slate-700">
-            <p><strong>＜主な実績・業務＞</strong></p>
-            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-              <li>AI生成コードのレビュー・修正実装およびFat Controller解消などのアーキテクチャ最適化を実施</li>
-              <li>短納期案件において、仕様設計上の整合性チェックと迅速な実装により期日内納品を実現</li>
-            </ul>
-          </div>
-        </div>
 
-        <!-- 案件 8 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
-            <h3 class="text-lg font-bold text-slate-900">電力会社向け設備管理システム（新規開発）</h3>
-            <span class="text-sm text-slate-500 font-medium">2024/12 〜 2026/03 (1年4ヶ月)</span>
+        <article class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <p class="text-xs font-semibold text-brand-600">2020/05〜2020/06</p>
+              <h3 class="mt-1 font-bold text-slate-900">
+                大手自動車メーカー向けシステム再構築
+              </h3>
+            </div>
+            <span class="inline-flex px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold shrink-0">
+              研修
+            </span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> サブリーダー (画面チーム5名 / 全体20名)</div>
-            <div><strong>言語/DB:</strong> Java, JS, HTML, CSS / Oracle</div>
-            <div><strong>OS:</strong> Linux</div>
-            <div><strong>FW・ツール:</strong> Spring Boot, MyBatis, Thymeleaf, Playwright</div>
-          </div>
-          <div class="text-sm space-y-2 text-slate-700">
-            <p><strong>＜主な実績・業務＞</strong></p>
-            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-              <li>サブリーダーとして詳細設計ルールの策定および開発テンプレートを作成し、開発品質・効率を大幅向上</li>
-              <li>検索画面（3件）、メニュー/照会画面（4件）、帳票作成・定期削除バッチ（5件）の設計・フルスクラッチ開発を担当</li>
-              <li>Playwrightを用いたテスト自動化の導入、画面共通部品の設計・実装によるリーダー負荷の分散に貢献</li>
-            </ul>
-          </div>
-        </div>
 
-        <!-- 案件 7 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
-            <h3 class="text-lg font-bold text-slate-900">大手電機メーカー向けIT資産管理システム（保守改善）</h3>
-            <span class="text-sm text-slate-500 font-medium">2024/06 〜 2024/11 (6ヶ月)</span>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> メンバー (15名)</div>
-            <div><strong>言語/DB:</strong> Java, JS, HTML, CSS / PostgreSQL</div>
-            <div><strong>OS:</strong> Linux</div>
-            <div><strong>FW・ツール:</strong> Strutsベース独自FW, Eclipse, SVN</div>
-          </div>
-          <div class="text-sm space-y-2 text-slate-700">
-            <p><strong>＜主な実績・業務＞</strong></p>
-            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-              <li>要件定義から基本設計、改修、単体・結合テストまで一貫して担当（改善案件5件対応）</li>
-              <li>SQLチューニングを実施し、システムパフォーマンスの向上を達成</li>
-              <li>運用担当者への丁寧な要件連携により手戻りコストを削減</li>
-            </ul>
-          </div>
-        </div>
+          <p class="mt-3 text-sm leading-6 text-slate-600">
+            Java、JavaScript、Python、Access等を使用した研修・学習を実施。
+            プロジェクト自体は中止となったため、実案件での開発には未着手。
+          </p>
 
-        <!-- 案件 6 & 5 & 4 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
-            <h3 class="text-lg font-bold text-slate-900">大手電機メーカー向け 財務・会計・環境基盤システム開発</h3>
-            <span class="text-sm text-slate-500 font-medium">2022/08 〜 2024/05 (約1年9ヶ月)</span>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Access</span>
+            <span class="tech-tag">Windows</span>
+            <span class="tech-tag">JavaApplet</span>
+            <span class="tech-tag">Eclipse</span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> メンバー (7〜10名)</div>
-            <div><strong>言語/DB:</strong> Java, ASTERIA / Oracle</div>
-            <div><strong>OS:</strong> Windows</div>
-            <div><strong>FW・ツール:</strong> 独自FW, JMeter, Git, SVN</div>
-          </div>
-          <div class="text-sm space-y-2 text-slate-700">
-            <p><strong>＜主な実績・業務＞</strong></p>
-            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-              <li>EAIツール「ASTERIA」を活用したデータ集約バッチ、レート換算バッチ、帳票バッチの設計・開発</li>
-              <li>子会社入出金の一元管理画面、月次引当承認画面などの設計・実装</li>
-              <li>JMeterを用いた負荷テストケースの作成・登録および開発環境の構成管理を担当</li>
-            </ul>
-          </div>
-        </div>
+        </article>
 
-        <!-- 案件 3 -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-2">
-            <h3 class="text-lg font-bold text-slate-900">大手電機メーカー向け受発注システム開発</h3>
-            <span class="text-sm text-slate-500 font-medium">2020/07 〜 2022/07 (2年1ヶ月)</span>
+
+        <article class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm md:col-span-2">
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <p class="text-xs font-semibold text-brand-600">2020/04</p>
+              <h3 class="mt-1 font-bold text-slate-900">
+                大手電機メーカー向け経費管理システム開発
+              </h3>
+            </div>
+            <span class="inline-flex px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold shrink-0">
+              OJT
+            </span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs bg-slate-50 p-3 rounded-lg mb-4 text-slate-600">
-            <div><strong>役割/体制:</strong> メンバー (10名)</div>
-            <div><strong>言語/DB:</strong> Java, JS, HTML, CSS / Oracle</div>
-            <div><strong>OS:</strong> Windows</div>
-            <div><strong>FW・ツール:</strong> 独自FW, Eclipse, Git</div>
+
+          <p class="mt-3 text-sm leading-6 text-slate-600">
+            Javaによるローカル機能追加、既存ソース解析、ドキュメント更新、
+            iOS環境でのシステムテストなどを実施。
+          </p>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">Oracle</span>
+            <span class="tech-tag">Windows</span>
+            <span class="tech-tag">独自FW</span>
+            <span class="tech-tag">Eclipse</span>
           </div>
-          <div class="text-sm space-y-2 text-slate-700">
-            <p><strong>＜主な実績・業務＞</strong></p>
-            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-              <li>見積画面〜経理精査画面まで全体を通しての改修および障害調査・保守対応を担当</li>
-              <li>バーコード読取画面の実装、メール送信バッチの機能追加・改修に対応</li>
-              <li>本番障害対応でスピーディな原因特定を行い、チーム内・顧客からの評価を獲得</li>
-            </ul>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- Qualifications -->
+    <section id="qualification" class="py-10 sm:py-12 border-t border-slate-200">
+      <div class="mb-6">
+        <p class="section-label text-xs font-semibold text-brand-600 mb-2">
+          QUALIFICATIONS
+        </p>
+        <h2 class="text-2xl font-bold text-slate-900">
+          資格
+        </h2>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+
+          <div class="flex items-center gap-3 py-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-brand-600">01</span>
+            <span class="text-sm font-medium text-slate-800">
+              ITパスポート
+            </span>
           </div>
+
+          <div class="flex items-center gap-3 py-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-brand-600">02</span>
+            <span class="text-sm font-medium text-slate-800">
+              基本情報技術者
+            </span>
+          </div>
+
+          <div class="flex items-center gap-3 py-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-brand-600">03</span>
+            <span class="text-sm font-medium text-slate-800">
+              C言語プログラミング能力認定試験 2級
+            </span>
+          </div>
+
+          <div class="flex items-center gap-3 py-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-brand-600">04</span>
+            <span class="text-sm font-medium text-slate-800">
+              Microsoft Office Specialist Word 2016
+            </span>
+          </div>
+
+          <div class="flex items-center gap-3 py-2 sm:col-span-2">
+            <span class="text-xs font-bold text-brand-600">05</span>
+            <span class="text-sm font-medium text-slate-800">
+              普通自動車第一種運転免許（AT限定）
+            </span>
+          </div>
+
         </div>
 
       </div>
@@ -311,9 +1245,111 @@
 
   </main>
 
-  <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800 mt-16">
-    <p>&copy; 濱口 寛也. All Rights Reserved.</p>
+
+  <!-- Closing -->
+  <section class="bg-slate-900 text-white mt-2">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 sm:py-14">
+
+      <p class="section-label text-xs font-semibold text-blue-400 mb-3">
+        THANK YOU FOR READING
+      </p>
+
+      <h2 class="text-2xl sm:text-3xl font-bold">
+        ご覧いただきありがとうございます。
+      </h2>
+
+      <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+        バックエンド開発を中心に、設計・実装・テスト・保守まで幅広く経験しています。
+        新しい技術や環境についても必要に応じて調査・キャッチアップし、
+        プロジェクトの状況に合わせて柔軟に対応します。
+      </p>
+
+      <div class="mt-8 flex items-end justify-between gap-4">
+        <div>
+          <p class="text-xl font-bold text-white">
+            
+          </p>
+          <p class="mt-1 text-sm text-slate-400">
+            Backend Engineer
+          </p>
+        </div>
+
+        <div class="hidden sm:block text-right">
+          <p class="text-xs text-slate-500">
+            Portfolio / Career History
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-500">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col sm:flex-row justify-between gap-2 text-xs">
+      <span>Backend Engineer</span>
+      <span>Portfolio & Career History</span>
+    </div>
   </footer>
+
+
+  <script>
+    function calculateAge(birthDate, today = new Date()) {
+      let age = today.getFullYear() - birthDate.getFullYear();
+
+      const birthdayThisYear = new Date(
+        today.getFullYear(),
+        birthDate.getMonth(),
+        birthDate.getDate()
+      );
+
+      if (today < birthdayThisYear) {
+        age--;
+      }
+
+      return age;
+    }
+
+    function calculateExperienceFromMonth(
+      startYear,
+      startMonth,
+      today = new Date()
+    ) {
+      const totalMonths =
+        (today.getFullYear() - startYear) * 12 +
+        ((today.getMonth() + 1) - startMonth);
+
+      const years = Math.floor(totalMonths / 12);
+      const months = totalMonths % 12;
+
+      return {
+        years,
+        months
+      };
+    }
+
+    const birthDate = new Date(2000, 1, 1);
+
+    const experienceStartYear = 2020;
+    const experienceStartMonth = 4;
+
+    const age = calculateAge(birthDate);
+
+    const experience = calculateExperienceFromMonth(
+      experienceStartYear,
+      experienceStartMonth
+    );
+
+    document.getElementById("age").textContent = age;
+
+    const experienceText =
+      experience.months === 0
+        ? `${experience.years}年`
+        : `${experience.years}年${experience.months}ヶ月`;
+
+    document.getElementById("experience").textContent = experienceText;
+  </script>
 
 </body>
 </html>
